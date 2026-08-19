@@ -74,11 +74,11 @@ export default function AdminLogin() {
   }
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0a0a0f] px-4 pb-20 pt-28 text-white">
+    <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#0a0a0f] px-4 pb-16 pt-24 text-white sm:pb-20 sm:pt-28">
       <div className="absolute inset-0 bg-grid opacity-60 pointer-events-none" aria-hidden="true" />
       <div className="absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-violet-600/15 blur-3xl pointer-events-none" aria-hidden="true" />
 
-      <div className="glass-card relative w-full max-w-md rounded-2xl p-6 sm:p-8">
+      <div className="glass-card relative w-full max-w-md rounded-2xl p-5 sm:p-8">
         <div className="mb-8 text-center">
           <span className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-violet-500/30 bg-violet-500/10 text-2xl text-violet-300">
             <FaShieldAlt aria-hidden="true" />

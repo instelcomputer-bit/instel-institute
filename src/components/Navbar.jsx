@@ -239,7 +239,7 @@ export default function Navbar() {
 
           {/* === DESKTOP NAV === */}
           <motion.nav
-            className="hidden md:flex items-center gap-8"
+            className="hidden lg:flex items-center gap-5 xl:gap-8"
             aria-label="Primary navigation"
             variants={navLinkContainerVariants}
             initial="hidden"
@@ -298,7 +298,7 @@ export default function Navbar() {
 
           {/* === MOBILE HAMBURGER === */}
           <motion.button
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition-colors duration-200"
+            className="flex h-11 w-11 items-center justify-center rounded-lg text-gray-300 transition-colors duration-200 hover:bg-white/5 hover:text-white lg:hidden"
             onClick={() => setMenuOpen((prev) => !prev)}
             whileTap={{ scale: 0.88 }}
             initial={{ opacity: 0 }}
@@ -344,7 +344,7 @@ export default function Navbar() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="md:hidden overflow-hidden bg-[rgba(10,10,15,0.96)] backdrop-blur-xl border-t border-violet-500/10"
+            className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-violet-500/10 bg-[rgba(10,10,15,0.96)] backdrop-blur-xl lg:hidden"
             aria-label="Mobile navigation"
           >
             <div className="px-4 py-4 flex flex-col gap-1">
@@ -366,7 +366,7 @@ export default function Navbar() {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                  className={`flex min-h-11 items-center rounded-lg px-4 py-3 text-sm font-medium transition-colors duration-200 ${
                     isActive
                       ? "text-violet-400 bg-violet-500/10"
                       : "text-gray-400 hover:text-white hover:bg-white/5"

@@ -18,6 +18,19 @@ body {
   min-height: 100vh;
   margin: 0;
   background: #0a0a0f;
+  overflow-x: clip;
+}
+
+#root {
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
 }
 
 button,
@@ -115,5 +128,15 @@ a {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .heavy-particle:nth-child(n + 13) {
+    display: none;
+  }
+
+  .glass-card {
+    backdrop-filter: blur(10px);
   }
 }

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import DigitalCursor from './components/DigitalCursor';
+import CertificateErrorBoundary from './components/CertificateErrorBoundary';
 
 // Lazy load section components for code splitting
 const Hero = lazy(() => import('./components/Hero'));
@@ -76,7 +77,9 @@ export default function App() {
             path="/certificate"
             element={
               <Suspense fallback={<SectionLoader />}>
-                <CertificateVerification />
+                <CertificateErrorBoundary>
+                  <CertificateVerification />
+                </CertificateErrorBoundary>
               </Suspense>
             }
           />

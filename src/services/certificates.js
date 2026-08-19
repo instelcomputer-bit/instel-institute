@@ -46,7 +46,14 @@ export async function verifyCertificate(rollNumber, studentName) {
     .maybeSingle();
 
   if (error) throw error;
-  return data;
+  if (!data) return null;
+
+  return {
+    ...data,
+    certificate_files: Array.isArray(data.certificate_files)
+      ? data.certificate_files.filter(Boolean)
+      : [],
+  };
 }
 
 export async function listCertificates() {

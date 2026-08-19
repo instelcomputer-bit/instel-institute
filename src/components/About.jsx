@@ -135,7 +135,7 @@ function StatCard({ stat, index }) {
         boxShadow: `0 12px 28px ${glow}`,
         transition: { duration: 0.25, ease: 'easeOut' },
       }}
-      className="relative group glass-card rounded-2xl p-6 text-center transition-colors duration-300 cursor-default"
+      className="relative group min-w-0 glass-card rounded-2xl p-4 sm:p-6 text-center transition-colors duration-300 cursor-default"
       style={{ animationDelay: `${index * 0.5}s` }}
     >
       {/* Hover glow */}
@@ -192,7 +192,7 @@ export default function About() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-20">
 
           {/* === LEFT — Text Content (slide in from left) === */}
           <motion.div
@@ -342,7 +342,7 @@ export default function About() {
               variants={staggerContainer}
               initial="hidden"
               animate={rightInView ? 'visible' : 'hidden'}
-              className="grid grid-cols-2 gap-4"
+              className="grid grid-cols-2 gap-3 sm:gap-4"
               aria-label="Institute statistics"
             >
               {STATS.map((stat, index) => (

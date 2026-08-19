@@ -19,6 +19,14 @@ function getSearchError(error) {
   return error?.message || 'Unable to verify the certificate. Please try again.';
 }
 
+function getCertificateFiles(certificate) {
+  if (!Array.isArray(certificate?.certificate_files)) return [];
+
+  return certificate.certificate_files.filter(
+    (file) => file && typeof file.file_url === 'string' && file.file_url.trim()
+  );
+}
+
 export default function CertificateVerification() {
   const [rollNumber, setRollNumber] = useState('');
   const [studentName, setStudentName] = useState('');
@@ -62,10 +70,11 @@ export default function CertificateVerification() {
   };
 
   const handleDownload = async (file, index) => {
-    setDownloadingId(file.id);
+    const downloadId = file.id ?? `certificate-${index}`;
+    setDownloadingId(downloadId);
     setMessage('');
     try {
-      const extension = file.file_url.split('.').pop()?.split('?')[0] || 'jpg';
+      const extension = file.file_url.split('.').pop()?.split(/[?#]/)[0] || 'jpg';
       await downloadCertificateImage(
         file.file_url,
         `${certificate.Roll_No}-certificate-${index + 1}.${extension}`
@@ -77,16 +86,16 @@ export default function CertificateVerification() {
     }
   };
 
-  const certificateFiles = certificate?.certificate_files ?? [];
+  const certificateFiles = getCertificateFiles(certificate);
 
   return (
-    <section className="relative min-h-screen overflow-hidden pt-28 pb-28 sm:pb-32 px-4 bg-[#0a0a0f] text-white">
+    <section className="relative min-h-screen overflow-hidden bg-[#0a0a0f] px-4 pb-20 pt-24 text-white sm:pb-28 sm:pt-28">
       <div className="absolute top-20 left-0 w-80 h-80 rounded-full bg-violet-600/10 blur-3xl" aria-hidden="true" />
       <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-blue-600/10 blur-3xl" aria-hidden="true" />
 
       <div className="relative max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] shadow-2xl shadow-violet-950/30">
-          <div className="relative flex flex-col justify-center p-8 sm:p-12 lg:p-16 bg-gradient-to-br from-violet-600/20 via-purple-600/10 to-transparent">
+          <div className="relative flex min-w-0 flex-col justify-center bg-gradient-to-br from-violet-600/20 via-purple-600/10 to-transparent p-6 sm:p-10 lg:p-16">
             <div className="absolute top-8 right-8 text-violet-400/10" aria-hidden="true">
               <FaCertificate className="text-[150px]" />
             </div>
@@ -96,7 +105,7 @@ export default function CertificateVerification() {
                 <FaChartLine className="text-3xl" aria-hidden="true" />
               </div>
               <p className="mb-3 text-sm font-semibold tracking-[0.2em] uppercase text-violet-300">Instel Institute</p>
-              <h1 className="max-w-lg text-4xl sm:text-5xl font-bold leading-tight">Verify your achievement with confidence.</h1>
+              <h1 className="max-w-lg text-3xl font-bold leading-tight sm:text-5xl">Verify your achievement with confidence.</h1>
               <p className="max-w-xl mt-5 text-base sm:text-lg leading-relaxed text-gray-400">Enter your Roll Number and Student Name to confirm that your certificate was officially issued by Instel Computer &amp; Coaching Institute.</p>
 
               <div className="grid sm:grid-cols-2 gap-4 mt-9">
@@ -106,8 +115,8 @@ export default function CertificateVerification() {
             </div>
           </div>
 
-          <div className="p-6 sm:p-10 lg:p-12 bg-[#15151b]/90 backdrop-blur-xl">
-            <h2 className="text-3xl font-bold mb-2 text-white">Certificate Verification</h2>
+          <div className="min-w-0 bg-[#15151b]/90 p-5 backdrop-blur-xl sm:p-10 lg:p-12">
+            <h2 className="mb-2 text-2xl font-bold text-white sm:text-3xl">Certificate Verification</h2>
             <p className="mb-8 text-gray-400">Enter both details exactly as shown on the certificate.</p>
             <form onSubmit={handleSearch} className="space-y-6" noValidate>
               <div>
@@ -134,7 +143,7 @@ export default function CertificateVerification() {
         </div>
 
         {certificate && (
-          <div className="mt-8 mb-8 sm:mb-12 glass-card rounded-3xl p-6 sm:p-10" aria-live="polite">
+          <div className="mt-8 mb-8 min-w-0 rounded-3xl p-5 glass-card sm:mb-12 sm:p-10" aria-live="polite">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-6 mb-7 border-b border-white/10">
               <div>
                 <div className="inline-flex items-center gap-2 text-emerald-400 text-sm font-semibold"><FaCheckCircle aria-hidden="true" /> Certificate Verified</div>
@@ -149,15 +158,15 @@ export default function CertificateVerification() {
             {certificateFiles.length > 0 ? (
               <div className={`grid grid-cols-1 items-start gap-8 ${certificateFiles.length === 1 ? 'max-w-3xl mx-auto' : 'lg:grid-cols-2'}`}>
                 {certificateFiles.map((file, index) => (
-                  <article key={file.id} className="flex min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+                  <article key={file.id ?? `${file.file_url}-${index}`} className="flex min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-black/20">
                     <button type="button" onClick={() => setPreviewUrl(file.file_url)} className="group relative block w-full bg-black/30" aria-label={`View certificate image ${index + 1} larger`}>
                       <img src={file.file_url} alt={`${certificate.Name} certificate ${index + 1}`} className="block h-auto max-h-[620px] w-full object-contain" />
                       <span className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/45 transition-colors"><span className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity"><FaExpand /> View Larger</span></span>
                     </button>
-                    <div className="flex items-center justify-between gap-4 p-4">
+                    <div className="flex flex-col items-stretch gap-3 p-4 min-[390px]:flex-row min-[390px]:items-center min-[390px]:justify-between">
                       <p className="font-medium text-gray-300">Certificate Image {index + 1}</p>
-                      <button type="button" onClick={() => handleDownload(file, index)} disabled={downloadingId === file.id} className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-violet-200 bg-violet-500/15 border border-violet-500/25 hover:bg-violet-500/25 disabled:opacity-60">
-                        {downloadingId === file.id ? <FaSpinner className="animate-spin" /> : <FaDownload />} Download
+                      <button type="button" onClick={() => handleDownload(file, index)} disabled={downloadingId === (file.id ?? `certificate-${index}`)} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-violet-500/25 bg-violet-500/15 px-4 py-2 text-sm font-semibold text-violet-200 hover:bg-violet-500/25 disabled:opacity-60">
+                        {downloadingId === (file.id ?? `certificate-${index}`) ? <FaSpinner className="animate-spin" /> : <FaDownload />} Download
                       </button>
                     </div>
                   </article>
@@ -171,9 +180,9 @@ export default function CertificateVerification() {
       </div>
 
       {previewUrl && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90" role="dialog" aria-modal="true" aria-label="Certificate image preview" onClick={() => setPreviewUrl(null)}>
-          <button type="button" onClick={() => setPreviewUrl(null)} className="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 text-2xl hover:bg-white/20" aria-label="Close preview">×</button>
-          <img src={previewUrl} alt="Certificate preview" className="max-w-full max-h-[88vh] object-contain rounded-xl" onClick={(event) => event.stopPropagation()} />
+        <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-auto bg-black/90 p-3 sm:p-4" role="dialog" aria-modal="true" aria-label="Certificate image preview" onClick={() => setPreviewUrl(null)}>
+          <button type="button" onClick={() => setPreviewUrl(null)} className="absolute top-3 right-3 z-10 h-11 w-11 rounded-full bg-black/70 text-2xl hover:bg-white/20 sm:top-5 sm:right-5" aria-label="Close preview">×</button>
+          <img src={previewUrl} alt="Certificate preview" className="max-h-[calc(100dvh-1.5rem)] max-w-full object-contain rounded-xl" onClick={(event) => event.stopPropagation()} />
         </div>
       )}
     </section>

@@ -310,7 +310,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-20 sm:py-28 bg-[#0f0f1a]"
+      className="relative overflow-hidden py-20 sm:py-28 bg-[#0f0f1a]"
       aria-labelledby="contact-heading"
     >
       {/* Background decorations */}
@@ -359,11 +359,11 @@ export default function Contact() {
           variants={staggerContainer}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 lg:grid-cols-5 gap-10"
+          className="grid min-w-0 grid-cols-1 gap-8 lg:grid-cols-5 lg:gap-10"
         >
           {/* === FORM — 3 columns === */}
           <motion.div variants={fadeInUp} className="lg:col-span-3">
-            <div className="glass-card rounded-2xl p-6 sm:p-8">
+            <div className="glass-card min-w-0 rounded-2xl p-5 sm:p-8">
               <h3 className="text-xl font-bold text-white mb-6">Admission Enquiry Form</h3>
 
               {/* === SUCCESS MESSAGE — spring scale-in === */}
@@ -502,7 +502,7 @@ export default function Contact() {
 
           {/* === INFO PANEL — 2 columns === */}
           <motion.div variants={fadeInUp} className="lg:col-span-2 flex flex-col gap-6">
-            <div className="glass-card rounded-2xl p-6 sm:p-8">
+            <div className="glass-card min-w-0 rounded-2xl p-5 sm:p-8">
               <h3 className="text-xl font-bold text-white mb-6">Contact Information</h3>
 
               <div className="flex flex-col gap-5">

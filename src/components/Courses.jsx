@@ -181,7 +181,7 @@ const CourseCard = ({ course }) => {
           scale: { duration: 0.25, ease: 'easeOut' },
         },
       }}
-      className="relative group rounded-2xl p-6 glass-card transition-shadow duration-300 cursor-pointer overflow-hidden"
+      className="relative group min-w-0 rounded-2xl p-5 sm:p-6 glass-card transition-shadow duration-300 cursor-pointer overflow-hidden"
       style={{
         '--glow-border': glowBorder,
       }}
@@ -314,7 +314,7 @@ export default function Courses() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3"
           role="list"
           aria-label="Available courses"
         >

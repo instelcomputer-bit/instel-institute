@@ -22,7 +22,7 @@ const MainLogoMark = () => (
 );
 
 // === HEAVY PARTICLE SYSTEM ===
-const PARTICLE_COUNT = 50;
+const PARTICLE_COUNT = 28;
 const generateParticles = () =>
   Array.from({ length: PARTICLE_COUNT }, (_, i) => ({
     id: i,
@@ -179,12 +179,12 @@ export default function Hero() {
       <HeavyParticles />
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0f]"
+      className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-[#0a0a0f]"
       aria-label="Hero section"
     >
       {/* === BACKGROUND GRADIENT BLOBS === */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none pulse-glow heavy-blur morph-blob"
+        className="absolute top-1/4 left-1/4 h-64 w-64 sm:h-96 sm:w-96 rounded-full pointer-events-none pulse-glow heavy-blur morph-blob"
         style={{
           background: 'radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%)',
           filter: 'blur(40px)',
@@ -195,7 +195,7 @@ export default function Hero() {
         aria-hidden="true"
       />
       <motion.div
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full pointer-events-none pulse-glow heavy-blur morph-blob"
+        className="absolute bottom-1/4 right-1/4 h-56 w-56 sm:h-80 sm:w-80 rounded-full pointer-events-none pulse-glow heavy-blur morph-blob"
         style={{
           background: 'radial-gradient(circle, rgba(168,85,247,0.10) 0%, transparent 70%)',
           filter: 'blur(40px)',
@@ -211,7 +211,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-grid opacity-60 pointer-events-none" aria-hidden="true" />
 
       {/* === FLOATING TECH ICONS (Framer Motion continuous float) === */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div className="absolute inset-0 hidden sm:block pointer-events-none" aria-hidden="true">
         {FLOATING_ICONS.map(({ Icon, top, left, right, delay, durScale, size, color, floatY, floatR }, i) => (
           <motion.div
             key={i}
@@ -247,7 +247,7 @@ export default function Hero() {
       </div>
 
       {/* === MAIN CONTENT === */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-24 lg:py-20 grid grid-cols-[1.08fr_0.92fr] items-center gap-2 sm:gap-6 text-left">
+      <div className="relative z-10 grid w-full max-w-7xl grid-cols-1 items-center gap-6 px-4 pb-20 pt-24 text-left sm:px-6 sm:pb-24 sm:pt-28 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8 lg:px-8 lg:py-24">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -256,7 +256,7 @@ export default function Hero() {
         >
           {/* --- BADGE --- */}
           <motion.div variants={badgeVariant}>
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-violet-400 border border-violet-500/30 bg-violet-500/8 backdrop-blur-sm">
+            <span className="inline-flex max-w-full items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/8 px-3 py-2 text-[11px] font-semibold leading-4 text-violet-400 backdrop-blur-sm sm:px-4 sm:text-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" aria-hidden="true" />
               Admissions Open — Limited Seats Available
             </span>
@@ -264,7 +264,7 @@ export default function Hero() {
 
           {/* --- CINEMATIC WORD-BY-WORD HEADLINE --- */}
           <h1
-            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tight max-w-3xl"
+            className="max-w-3xl text-[clamp(2rem,10vw,3rem)] font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl"
             aria-label="Improve Your Skills With Technology"
           >
             {/* Line 1: white words */}
@@ -315,7 +315,7 @@ export default function Hero() {
           {/* --- SUBHEADLINE --- */}
           <motion.p
             variants={fadeInUp}
-            className="text-xs sm:text-base md:text-lg lg:text-xl text-gray-400 max-w-2xl leading-relaxed"
+            className="max-w-2xl text-sm leading-relaxed text-gray-400 sm:text-base md:text-lg lg:text-xl"
           >
             <strong className="text-gray-200">Instel Computer Institute</strong> — Learn, Grow, Succeed.
             Professional IT education with expert faculty, modern labs, and placement support.
@@ -326,12 +326,12 @@ export default function Hero() {
             variants={ctaContainerVariant}
             initial="hidden"
             animate="visible"
-            className="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-2"
+            className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4 mt-2"
           >
             <motion.button
               variants={ctaButtonVariant}
               onClick={handleEnroll}
-              className="relative overflow-hidden px-4 sm:px-8 py-2.5 sm:py-4 text-xs sm:text-base font-bold text-white rounded-xl bg-gradient-to-r from-violet-500 to-purple-500 shadow-xl shadow-violet-500/30 hover:shadow-violet-500/50 transition-shadow duration-300"
+              className="relative min-h-12 w-full overflow-hidden rounded-xl bg-gradient-to-r from-violet-500 to-purple-500 px-6 py-3 text-sm font-bold text-white shadow-xl shadow-violet-500/30 transition-shadow duration-300 hover:shadow-violet-500/50 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.96 }}
               aria-label="Join Now — get admission"
@@ -347,7 +347,7 @@ export default function Hero() {
             <motion.button
               variants={ctaButtonVariant}
               onClick={handleViewCourses}
-              className="px-4 sm:px-8 py-2.5 sm:py-4 text-xs sm:text-base font-bold text-violet-400 rounded-xl border border-violet-500/40 bg-violet-500/5 hover:bg-violet-500/12 hover:border-violet-400/60 transition-all duration-300 backdrop-blur-sm"
+              className="min-h-12 w-full rounded-xl border border-violet-500/40 bg-violet-500/5 px-6 py-3 text-sm font-bold text-violet-400 backdrop-blur-sm transition-all duration-300 hover:border-violet-400/60 hover:bg-violet-500/12 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.96 }}
               aria-label="View our available courses"
@@ -377,7 +377,7 @@ export default function Hero() {
 
         {/* === ANIMATED ROBOT === */}
         <motion.div
-          className="relative mx-auto w-full max-w-[260px] sm:max-w-[420px] lg:max-w-[590px]"
+          className="relative mx-auto w-full max-w-[280px] sm:max-w-[420px] lg:max-w-[590px]"
           initial={{ opacity: 0, x: 70, scale: 0.88 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
@@ -408,7 +408,7 @@ export default function Hero() {
 
       {/* === SCROLL INDICATOR === */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-600 cursor-pointer"
+        className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 text-gray-600 cursor-pointer sm:flex lg:bottom-8"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.8, duration: 0.6, ease: 'easeOut' }}

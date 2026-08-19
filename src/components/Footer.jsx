@@ -110,7 +110,7 @@ export default function Footer() {
           variants={footerContainerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
+          className="grid min-w-0 grid-cols-1 gap-9 py-12 sm:grid-cols-2 sm:py-14 lg:grid-cols-4 lg:gap-10"
         >
 
           {/* === BRAND COLUMN === */}
@@ -134,7 +134,7 @@ export default function Footer() {
               />
             </motion.a>
 
-            <p className="text-sm text-gray-500 leading-relaxed">
+            <p className="break-words text-sm leading-relaxed text-gray-500">
               Empowering Students with Digital Skills. Your trusted partner for
               professional IT education and career growth.
             </p>

@@ -20,7 +20,7 @@ const INITIAL_FORM = { rollNumber: '', name: '' };
 
 function getErrorMessage(error) {
   if (error?.message?.includes('row-level security')) {
-    return 'Supabase blocked this action. Check the certificates, certificate_files, and storage RLS policies.';
+    return 'This action is currently unavailable. Please try again or contact the administrator.';
   }
   return error?.message || 'Something went wrong. Please try again.';
 }
@@ -136,10 +136,10 @@ export default function CertificateAdmin() {
   };
 
   return (
-    <section className="relative min-h-screen pt-28 pb-20 px-4 bg-[#0a0a0f] text-white">
+    <section className="relative min-h-screen overflow-hidden bg-[#0a0a0f] px-4 pb-20 pt-24 text-white sm:pt-28">
       <div className="absolute inset-0 bg-grid opacity-50 pointer-events-none" aria-hidden="true" />
       <div className="relative max-w-7xl mx-auto">
-        <div className="mb-10">
+        <div className="mb-8 sm:mb-10">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 mb-4 rounded-full text-xs font-semibold text-violet-300 border border-violet-500/30 bg-violet-500/10">
             <FaCertificate aria-hidden="true" /> Certificate Management
           </span>
@@ -154,8 +154,8 @@ export default function CertificateAdmin() {
           </div>
         )}
 
-        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 items-start">
-          <form ref={formRef} onSubmit={handleSubmit} className="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+        <div className="grid min-w-0 items-start gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
+          <form ref={formRef} onSubmit={handleSubmit} className="glass-card min-w-0 space-y-6 rounded-2xl p-5 sm:p-8">
             <div>
               <h2 className="text-2xl font-bold">Add Certificate</h2>
               <p className="mt-1 text-sm text-gray-400">One or multiple certificate images are supported.</p>
@@ -181,7 +181,7 @@ export default function CertificateAdmin() {
             </div>
 
             {previews.length > 0 && (
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 gap-3 min-[390px]:grid-cols-3">
                 {previews.map(({ file, url }) => (
                   <button key={`${file.name}-${file.lastModified}`} type="button" onClick={() => setPreviewUrl(url)} className="group relative aspect-square overflow-hidden rounded-xl border border-white/10 bg-black/20" aria-label={`Preview ${file.name}`}>
                     <img src={url} alt={file.name} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
@@ -203,10 +203,10 @@ export default function CertificateAdmin() {
             </button>
           </form>
 
-          <div className="glass-card rounded-2xl p-6 sm:p-8">
-            <div className="flex items-center justify-between gap-4 mb-6">
-              <div><h2 className="text-2xl font-bold">Uploaded Certificates</h2><p className="mt-1 text-sm text-gray-400">{certificates.length} certificate{certificates.length === 1 ? '' : 's'}</p></div>
-              <button type="button" onClick={loadCertificates} disabled={loadingList} className="px-3 py-2 rounded-lg text-sm border border-white/10 hover:bg-white/5 disabled:opacity-50">Refresh</button>
+          <div className="glass-card min-w-0 rounded-2xl p-5 sm:p-8">
+            <div className="mb-6 flex flex-col items-stretch gap-4 min-[390px]:flex-row min-[390px]:items-center min-[390px]:justify-between">
+              <div className="min-w-0"><h2 className="text-xl font-bold sm:text-2xl">Uploaded Certificates</h2><p className="mt-1 text-sm text-gray-400">{certificates.length} certificate{certificates.length === 1 ? '' : 's'}</p></div>
+              <button type="button" onClick={loadCertificates} disabled={loadingList} className="min-h-11 rounded-lg border border-white/10 px-4 py-2 text-sm hover:bg-white/5 disabled:opacity-50">Refresh</button>
             </div>
 
             {loadingList ? (
@@ -214,18 +214,18 @@ export default function CertificateAdmin() {
             ) : certificates.length === 0 ? (
               <div className="flex flex-col items-center justify-center min-h-52 text-center text-gray-500"><FaCertificate className="mb-3 text-4xl text-violet-500/40" /><p>No certificates uploaded yet.</p></div>
             ) : (
-              <div className="space-y-4 max-h-[720px] overflow-y-auto pr-1">
+              <div className="max-h-[720px] space-y-4 overflow-y-auto overscroll-contain pr-1">
                 {certificates.map((certificate) => (
-                  <article key={certificate.id} className="p-4 rounded-xl border border-white/10 bg-white/[0.025]">
-                    <div className="flex items-start justify-between gap-4">
-                      <div><h3 className="font-bold text-white">{certificate.Name}</h3><p className="mt-1 text-sm text-violet-300">Roll No: {certificate.Roll_No}</p></div>
-                      <button type="button" onClick={() => handleDelete(certificate)} disabled={Boolean(deletingId)} className="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-red-300 bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 disabled:opacity-50" aria-label={`Delete certificate for ${certificate.Name}`}>
-                        {deletingId === certificate.id ? <FaSpinner className="animate-spin" /> : <FaTrash />} <span className="hidden sm:inline">Delete</span>
+                  <article key={certificate.id} className="min-w-0 rounded-xl border border-white/10 bg-white/[0.025] p-4">
+                    <div className="flex flex-col items-stretch gap-3 min-[390px]:flex-row min-[390px]:items-start min-[390px]:justify-between">
+                      <div className="min-w-0"><h3 className="break-words font-bold text-white">{certificate.Name}</h3><p className="mt-1 break-all text-sm text-violet-300">Roll No: {certificate.Roll_No}</p></div>
+                      <button type="button" onClick={() => handleDelete(certificate)} disabled={Boolean(deletingId)} className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg border border-red-500/20 bg-red-500/10 px-3 py-2 text-sm text-red-300 hover:bg-red-500/20 disabled:opacity-50" aria-label={`Delete certificate for ${certificate.Name}`}>
+                        {deletingId === certificate.id ? <FaSpinner className="animate-spin" /> : <FaTrash />} <span>Delete</span>
                       </button>
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4">
-                      {(certificate.certificate_files ?? []).map((file, index) => (
-                        <button key={file.id} type="button" onClick={() => setPreviewUrl(file.file_url)} className="group relative aspect-[4/3] overflow-hidden rounded-lg bg-black/30 border border-white/10" aria-label={`View certificate image ${index + 1}`}>
+                    <div className="mt-4 grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 sm:grid-cols-3">
+                      {(Array.isArray(certificate.certificate_files) ? certificate.certificate_files : []).filter((file) => file?.file_url).map((file, index) => (
+                        <button key={file.id ?? `${file.file_url}-${index}`} type="button" onClick={() => setPreviewUrl(file.file_url)} className="group relative aspect-[4/3] min-w-0 overflow-hidden rounded-lg bg-black/30 border border-white/10" aria-label={`View certificate image ${index + 1}`}>
                           <img src={file.file_url} alt={`${certificate.Name} certificate ${index + 1}`} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
                           <span className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/50 transition"><FaEye className="opacity-0 group-hover:opacity-100 transition-opacity" /></span>
                         </button>
@@ -240,9 +240,9 @@ export default function CertificateAdmin() {
       </div>
 
       {previewUrl && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90" role="dialog" aria-modal="true" aria-label="Certificate image preview" onClick={() => setPreviewUrl(null)}>
-          <button type="button" onClick={() => setPreviewUrl(null)} className="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 text-2xl" aria-label="Close preview">×</button>
-          <img src={previewUrl} alt="Certificate preview" className="max-w-full max-h-[88vh] object-contain rounded-xl" onClick={(event) => event.stopPropagation()} />
+        <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-auto bg-black/90 p-3 sm:p-4" role="dialog" aria-modal="true" aria-label="Certificate image preview" onClick={() => setPreviewUrl(null)}>
+          <button type="button" onClick={() => setPreviewUrl(null)} className="absolute top-3 right-3 z-10 h-11 w-11 rounded-full bg-black/70 text-2xl sm:top-5 sm:right-5" aria-label="Close preview">×</button>
+          <img src={previewUrl} alt="Certificate preview" className="max-h-[calc(100dvh-1.5rem)] max-w-full object-contain rounded-xl" onClick={(event) => event.stopPropagation()} />
         </div>
       )}
     </section>
