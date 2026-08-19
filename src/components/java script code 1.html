@@ -1,0 +1,26 @@
+<html>
+<Head>
+    <Title>Onload</Title>
+</Head>
+<Script Laguage="JavaScript">
+    <-
+    function goto()
+    {
+        open("C:/My documents/javascript/new.html","wl");
+    }
+    function changeColor()
+    {
+        document.bgColor="lightgreen";
+    }
+    //->
+</Script>
+<Body onLoad='changeColor()'>
+    <form name=f1>
+    <H2>Creating User defined functions</H2>
+    <Hr color="red">
+        <P>Click on the button"New Site" to open a web page.</P>
+        <Hr color="blue">
+        <Input type="button" value="New Site" on click='goto()'>
+    </form>
+</Body>
+</Html>
