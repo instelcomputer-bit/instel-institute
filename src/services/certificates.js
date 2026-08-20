@@ -1,4 +1,4 @@
-import { supabase } from '../supabase';
+import { requireSupabase } from '../supabase';
 
 const CERTIFICATE_BUCKET = 'certificates';
 const PUBLIC_PATH_MARKER = `/storage/v1/object/public/${CERTIFICATE_BUCKET}/`;
@@ -22,6 +22,7 @@ export function validateCertificateFiles(files) {
 }
 
 export async function findCertificateByRoll(rollNumber) {
+  const supabase = requireSupabase();
   const { data, error } = await supabase
     .from('certificates')
     .select('id, created_at, Roll_No, Name, certificate_files(id, file_url, created_at)')
@@ -35,6 +36,7 @@ export async function findCertificateByRoll(rollNumber) {
 }
 
 export async function verifyCertificate(rollNumber, studentName) {
+  const supabase = requireSupabase();
   const escapedName = studentName.trim().replace(/[\\%_]/g, '\\$&');
   const { data, error } = await supabase
     .from('certificates')
@@ -57,6 +59,7 @@ export async function verifyCertificate(rollNumber, studentName) {
 }
 
 export async function listCertificates() {
+  const supabase = requireSupabase();
   const { data, error } = await supabase
     .from('certificates')
     .select('id, created_at, Roll_No, Name, certificate_files(id, file_url, created_at)')
@@ -86,6 +89,7 @@ export function getStoragePath(fileUrl) {
 }
 
 export async function createCertificate({ rollNumber, name, files, onProgress }) {
+  const supabase = requireSupabase();
   const normalizedRoll = rollNumber.trim();
   const normalizedName = name.trim();
 
@@ -149,6 +153,7 @@ export async function createCertificate({ rollNumber, name, files, onProgress })
 }
 
 export async function deleteCertificate(certificate) {
+  const supabase = requireSupabase();
   const paths = (certificate.certificate_files ?? [])
     .map((file) => getStoragePath(file.file_url))
     .filter(Boolean);
@@ -178,6 +183,7 @@ export async function deleteCertificate(certificate) {
 }
 
 export async function downloadCertificateImage(fileUrl, filename) {
+  const supabase = requireSupabase();
   const path = getStoragePath(fileUrl);
   let blob;
 
