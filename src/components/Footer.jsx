@@ -247,8 +247,8 @@ export default function Footer() {
                 {
                   label: 'Email',
                   content: (
-                    <a href="mailto:instelcomputers@gmail.com" className="text-sm text-violet-400 hover:text-violet-300 transition-colors">
-                      instelcomputers@gmail.com
+                    <a href="mailto:instelcomputer@gmail.com" className="text-sm text-violet-400 hover:text-violet-300 transition-colors">
+                      instelcomputer@gmail.com
                     </a>
                   ),
                 },

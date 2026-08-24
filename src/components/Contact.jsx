@@ -40,8 +40,8 @@ const CONTACT_INFO = [
   {
     icon: FaEnvelope,
     label: 'Email',
-    value: 'instelcomputers@gmail.com',
-    href: 'mailto:instelcomputers@gmail.com',
+    value: 'instelcomputer@gmail.com',
+    href: 'mailto:instelcomputer@gmail.com',
     color: 'text-purple-400',
     bg: 'bg-purple-500/10',
   },
@@ -57,7 +57,7 @@ const CONTACT_INFO = [
 const INITIAL_FORM = { name: '', phone: '', email: '', course: '', message: '' };
 const INITIAL_ERRORS = { name: '', phone: '', email: '', course: '', message: '' };
 const FORM_ENDPOINT = 'https://formsubmit.co/ajax/rkumar89328@gmail.com';
-const SECONDARY_RECIPIENT = 'instelcomputers@gmail.com';
+const SECONDARY_RECIPIENT = 'instelcomputer@gmail.com';
 
 function validateForm(fields) {
   const errors = { ...INITIAL_ERRORS };
