@@ -303,8 +303,8 @@ export default function Courses() {
             Our <span className="gradient-text">Courses</span>
           </h2>
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Industry-relevant programs designed to make you job-ready. Each course comes with
-            hands-on practice, expert guidance, and a recognized certificate.
+            Explore practical computer courses in Ludhiana designed to make you job-ready. Each
+            course comes with hands-on practice, expert guidance, and a recognized certificate.
           </p>
         </motion.div>
 

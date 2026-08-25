@@ -122,21 +122,21 @@ export default function Footer() {
               href="#home"
               onClick={(e) => { e.preventDefault(); handleNavClick('#home'); }}
               className="flex items-center gap-2 group w-fit"
-              aria-label="Instel Computer Institute Home"
+              aria-label="Instel Computer Coaching Institute Home"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
               <motion.img
                 src={mainLogo}
-                alt="Instel Computer & Coaching Institute"
+                alt="Instel Computer Coaching Institute"
                 className="w-12 h-12 rounded-lg object-cover shadow-lg shadow-violet-500/25"
                 whileHover={{ rotate: [0, -8, 8, 0], transition: { duration: 0.4 } }}
               />
             </motion.a>
 
             <p className="break-words text-sm leading-relaxed text-gray-500">
-              Empowering Students with Digital Skills. Your trusted partner for
-              professional IT education and career growth.
+              Empowering students through practical computer classes in Ludhiana.
+              Your trusted partner for IT education and career growth.
             </p>
 
             {/* === SOCIAL ICONS — bounce on hover === */}
@@ -234,7 +234,7 @@ export default function Footer() {
               {[
                 {
                   label: 'Address',
-                  content: <p className="text-sm text-gray-400">St.No.3, G.T.B, Near Children Valley School, Opp. Tiger Property, 33 Ft. Road, Ludhiana</p>,
+                  content: <p className="text-sm text-gray-400">4410, Guru Teg Bahadur Singh Nagar, Ludhiana, Punjab, India, 141015</p>,
                 },
                 {
                   label: 'Contact – Rohit',
@@ -279,7 +279,7 @@ export default function Footer() {
           className="py-6 border-t border-white/6 flex flex-col sm:flex-row items-center justify-between gap-3"
         >
           <p className="text-xs text-gray-600 text-center sm:text-left">
-            &copy; {currentYear} Instel Computer Institute. All Rights Reserved.
+            &copy; {currentYear} Instel Computer Coaching Institute. All Rights Reserved.
           </p>
           <p className="text-xs text-gray-600 flex items-center gap-1.5">
             Made with

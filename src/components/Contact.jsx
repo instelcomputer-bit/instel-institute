@@ -25,7 +25,7 @@ const CONTACT_INFO = [
   {
     icon: FaMapMarkerAlt,
     label: 'Address',
-    value: 'St.No.3, G.T.B, Near Children Valley School, Opp. Tiger Property, 33 Ft. Road, Ludhiana',
+    value: '4410, Guru Teg Bahadur Singh Nagar, Ludhiana, Punjab, India, 141015',
     color: 'text-violet-400',
     bg: 'bg-violet-500/10',
   },
@@ -563,8 +563,8 @@ export default function Contact() {
                   >
                     <FaMapMarkerAlt className="text-violet-400 text-base" aria-hidden="true" />
                   </motion.div>
-                  <p className="text-sm font-semibold text-gray-300">G.T.B, 33 Ft. Road, Near Children Valley School</p>
-                  <p className="text-xs text-gray-500">Ludhiana, Punjab</p>
+                  <p className="text-sm font-semibold text-gray-300">4410, Guru Teg Bahadur Singh Nagar</p>
+                  <p className="text-xs text-gray-500">Ludhiana, Punjab, India, 141015</p>
                 </div>
               </div>
               <div className="p-4 border-t border-white/6">

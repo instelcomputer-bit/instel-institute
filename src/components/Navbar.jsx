@@ -227,11 +227,11 @@ export default function Navbar() {
             animate="visible"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
-            aria-label="Instel Computer Institute Home"
+            aria-label="Instel Computer Coaching Institute Home"
           >
             <motion.img
               src={mainLogo}
-              alt="Instel Computer & Coaching Institute"
+              alt="Instel Computer Coaching Institute"
               className="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover shadow-lg shadow-violet-500/20"
               whileHover={{ rotate: [0, -8, 8, 0], transition: { duration: 0.4 } }}
             />

@@ -215,20 +215,20 @@ export default function About() {
                 id="about-heading"
                 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight"
               >
-                About <span className="gradient-text">Instel Computer</span> Institute
+                About <span className="gradient-text">Instel Computer Coaching</span> Institute
               </h2>
             </div>
 
             <p className="text-gray-400 text-base sm:text-lg leading-relaxed">
-              We are a leading computer education institute dedicated to providing
+              We are a computer coaching institute in Ludhiana dedicated to providing
               quality IT education to students of all backgrounds. Our expert faculty
               and modern labs ensure the best learning experience, preparing students
               for the demands of today's digital workforce.
             </p>
 
             <p className="text-gray-500 text-sm sm:text-base leading-relaxed">
-              Founded with the mission to bridge the digital divide, Instel Computer
-              Institute has been transforming lives through technology education.
+              Founded with the mission to bridge the digital divide, Instel Computer Coaching
+              Institute helps learners build practical skills through technology education.
               Whether you're a student, homemaker, or working professional — we have
               a course tailored for you.
             </p>
@@ -308,12 +308,12 @@ export default function About() {
               <div className="relative flex items-start gap-4">
                 <motion.img
                   src={mainLogo}
-                  alt="Instel Computer & Coaching Institute"
+                  alt="Instel Computer Coaching Institute"
                   className="flex-shrink-0 w-16 h-16 rounded-xl object-cover shadow-lg shadow-violet-500/25"
                   whileHover={{ rotate: [0, -8, 8, 0], scale: 1.08, transition: { duration: 0.4 } }}
                 />
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-1">Instel Computer Institute</h3>
+                  <h3 className="text-xl font-bold text-white mb-1">Instel Computer Coaching Institute</h3>
                   <p className="text-sm text-gray-400 leading-relaxed">
                     Affiliated with leading certification bodies, our programs are
                     recognized by government and private sector employers alike.

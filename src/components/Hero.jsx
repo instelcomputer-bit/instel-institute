@@ -73,8 +73,8 @@ const FLOATING_ICONS = [
 ];
 
 // === HEADLINE WORDS ===
-const HEADLINE_LINE_1 = ['Improve', 'Your', 'Skills'];
-const HEADLINE_LINE_2 = ['With', 'Technology'];
+const HEADLINE_LINE_1 = ['Instel', 'Computer', 'Coaching'];
+const HEADLINE_LINE_2 = ['Institute', 'in', 'Ludhiana'];
 
 // === ANIMATION VARIANTS ===
 const containerVariants = {
@@ -265,7 +265,7 @@ export default function Hero() {
           {/* --- CINEMATIC WORD-BY-WORD HEADLINE --- */}
           <h1
             className="max-w-3xl text-[clamp(2rem,10vw,3rem)] font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl"
-            aria-label="Improve Your Skills With Technology"
+            aria-label="Instel Computer Coaching Institute in Ludhiana"
           >
             {/* Line 1: white words */}
             <span className="block text-white" aria-hidden="true">
@@ -317,8 +317,8 @@ export default function Hero() {
             variants={fadeInUp}
             className="max-w-2xl text-sm leading-relaxed text-gray-400 sm:text-base md:text-lg lg:text-xl"
           >
-            <strong className="text-gray-200">Instel Computer Institute</strong> — Learn, Grow, Succeed.
-            Professional IT education with expert faculty, modern labs, and placement support.
+            <strong className="text-gray-200">Instel Computer Coaching Institute</strong> — Learn, Grow, Succeed.
+            Practical computer training in Ludhiana with expert faculty, modern labs, and placement support.
           </motion.p>
 
           {/* --- CTA BUTTONS (spring slide-up, staggered) --- */}

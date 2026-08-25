@@ -104,9 +104,9 @@ export default function CertificateVerification() {
               <div className="inline-flex items-center justify-center w-16 h-16 mb-7 rounded-2xl bg-violet-500/15 border border-violet-400/20 text-violet-300">
                 <FaChartLine className="text-3xl" aria-hidden="true" />
               </div>
-              <p className="mb-3 text-sm font-semibold tracking-[0.2em] uppercase text-violet-300">Instel Institute</p>
+              <p className="mb-3 text-sm font-semibold tracking-[0.2em] uppercase text-violet-300">Instel Computer Coaching Institute</p>
               <h1 className="max-w-lg text-3xl font-bold leading-tight sm:text-5xl">Verify your achievement with confidence.</h1>
-              <p className="max-w-xl mt-5 text-base sm:text-lg leading-relaxed text-gray-400">Enter your Roll Number and Student Name to confirm that your certificate was officially issued by Instel Computer &amp; Coaching Institute.</p>
+              <p className="max-w-xl mt-5 text-base sm:text-lg leading-relaxed text-gray-400">Enter your Roll Number and Student Name to confirm that your certificate was officially issued by Instel Computer Coaching Institute.</p>
 
               <div className="grid sm:grid-cols-2 gap-4 mt-9">
                 <div className="flex items-center gap-3 text-gray-300"><FaShieldAlt className="shrink-0 text-violet-400" aria-hidden="true" /><span>Secure verification</span></div>
